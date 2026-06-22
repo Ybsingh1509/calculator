@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Cyber Arcade | 1-4 Player Party Games</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo" id="logo-btn">CYBER ARCADE</div>
+        <div class="header-controls">
+            <button id="home-btn" class="primary" style="display: none;">Arcade Lobby</button>
+            <button id="mute-btn">🎵 Muted</button>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- SCREEN 1: Lobby Setup -->
+        <section id="lobby-screen" class="screen active">
+            <div class="panel lobby-card">
+                <h2>Arcade Player Setup</h2>
+                
+                <div class="options-group">
+                    <label>How Many Players?</label>
+                    <div class="player-selector" id="p-count-selector">
+                        <button class="selector-btn selected" data-players="1">1P</button>
+                        <button class="selector-btn" data-players="2">2P</button>
+                        <button class="selector-btn" data-players="3">3P</button>
+                        <button class="selector-btn" data-players="4">4P</button>
+                    </div>
+                </div>
+
+                <!-- Bot Difficulty (only visible if 1 Player is selected) -->
+                <div class="options-group" id="difficulty-group">
+                    <label>AI Opponent Difficulty</label>
+                    <div class="difficulty-selector" id="bot-diff-selector">
+                        <button class="selector-btn" data-diff="easy">Easy</button>
+                        <button class="selector-btn selected" data-diff="medium">Medium</button>
+                        <button class="selector-btn" data-diff="hard">Hard</button>
+                    </div>
+                </div>
+
+                <div class="options-group">
+                    <label>Player Details</label>
+                    <div class="player-inputs" id="player-inputs-container">
+                        <!-- Inputs dynamically generated in app.js -->
+                    </div>
+                </div>
+
+                <button id="start-arcade-btn" class="primary" style="width: 100%; padding: 1.2rem; font-size: 1.1rem;">Enter Game Lobby</button>
+            </div>
+        </section>
+
+        <!-- SCREEN 2: Game Selector Grid -->
+        <section id="game-select-screen" class="screen">
+            <div class="game-grid-container">
+                <div class="game-grid-header">
+                    <h2>Select Your Game</h2>
+                    <p id="lobby-player-count-indicator">1 Player vs Bots (Medium)</p>
+                </div>
+                <div class="game-grid" id="game-list-grid">
+                    <!-- Cards will be populated dynamically from games list inside app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN 3: Playzone -->
+        <section id="playzone-screen" class="screen">
+            <div class="playzone-layout">
+                <!-- Game Screen Wrapper -->
+                <div class="game-wrapper" id="game-view-wrapper">
+                    <!-- Canvas Game View -->
+                    <canvas id="game-canvas" class="game-canvas" width="960" height="540"></canvas>
+                    
+                    <!-- DOM Game View -->
+                    <div id="game-dom-container" class="game-dom-container" style="display: none;"></div>
+
+                    <!-- Overlay for Game Over -->
+                    <div class="overlay" id="gameover-overlay">
+                        <div class="overlay-title" id="gameover-title">Game Over</div>
+                        <div class="overlay-sub" id="gameover-winner">Winner details here</div>
+                        <div class="overlay-btns">
+                            <button id="rematch-btn" class="primary">Play Again</button>
+                            <button id="exit-game-btn">Select Another Game</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar for Scoreboards and Controller details -->
+                <div class="sidebar-panel">
+                    <div class="panel scoreboard">
+                        <h3>Match Scores</h3>
+                        <div class="score-list" id="score-list-container">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="panel controls-panel">
+                        <h3>Game Controls</h3>
+                        <div class="controls-legend-grid" id="controls-legend-container">
+                            <!-- Keys will be generated per player dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Cyberpunk Local Party Arcade. Designed by Antigravity AI. Play on a shared screen.</p>
+    </footer>
+
+    <!-- Include core app files -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>
